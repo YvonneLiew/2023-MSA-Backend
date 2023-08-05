@@ -31,8 +31,6 @@ namespace Expenses.WebApi
 
             services.AddControllers();
 
-            services.AddDbContext<AppDbContext>();
-
             services.AddTransient<IExpensesServices, ExpensesServices>();
 
             services.AddTransient<IUserService, UserService>();

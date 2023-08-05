@@ -29,10 +29,15 @@ namespace Expenses.WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateExpense(DB.Expense expense)
+        public IActionResult CreateExpense(Expense expense)
         {
-            var newExpense = _expensesServices.CreateExpense(expense);
-            return CreatedAtRoute("GetExpense", new {newExpense.Id}, newExpense);
+            var newExpense = _expensesServices.CreateExpense(new DB.Expense
+            {
+                Description = expense.Description,
+                Amount = expense.Amount
+                // Other properties, if any
+            });
+            return CreatedAtRoute("GetExpense", new { newExpense.Id }, newExpense);
         }
 
         [HttpDelete]

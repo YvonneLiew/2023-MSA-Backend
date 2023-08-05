@@ -26,7 +26,7 @@ namespace Expenses.Core
             .Where(e => e.User.Id == _user.Id && e.Id == id)
             .Select(e => (Expense)e)
             .First();
-        
+
         public Expense CreateExpense(DB.Expense expense)
         {
             expense.User = _user;
@@ -34,6 +34,8 @@ namespace Expenses.Core
             _context.SaveChanges();
             return (Expense)expense;
         }
+
+
 
         public void DeleteExpense(Expense expense)
         {
